@@ -4,7 +4,6 @@ import os
 
 load_dotenv()
 
-
 API_KEY = os.environ.get("API_KEY")
 
 
@@ -32,7 +31,10 @@ if __name__ == '__main__':
         for idx, recipe in enumerate(recipes):
             print(f"{idx + 1}. {recipe['title']}")
             print(f" - Used ingredients: {', '.join([ingredient['name'] for ingredient in recipe['usedIngredients']])}")
-            print(f" - Missing ingredients: {', '.join([ingredient['name'] for ingredient in recipe['missedIngredients']])}")
+            print(
+                f" - Missing ingredients: {', '.join([ingredient['name'] for ingredient in recipe['missedIngredients']])}")
+            print(f" - Recipe link: https://spoonacular.com/recipes/{recipe['title'].replace(' ', '-')}-{recipe['id']}")
+            print(f" - Image: {recipe['image']}")
             print()
     else:
         print("No recipes found.")
